@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue JS</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    {{name}}
+    <br>
+    {{getting()}}
+    <p v-text="content"></p>
+    <p v-html="htmlText"></p>
+    <p v-if="wel()">
+      Welcome Mr. {{name}}
+    </p>
+    <p v-else>
+      Please don't go here!
+    </p>
+    <p v-show="name === 'Jone'">
+      ki khobor Mr. {{name}}
+    </p>
+    <p v-show="name !== 'Jone'">
+      Please comeback here!
+    </p>
+  </div>
+  <div id="app3">
+    <span v-if="seen">Now you see me</span>
+    <span v-else>
+      You don't show me!
+    </span>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        name: "Jone",
+        age: 20,
+        allowedAge: 15,
+        numbers: [25, 30, 35],
+        info: {
+          firstName: "Imran",
+          lastName: "Hossain",
+          age: 25
+        },
+        content: "Hello Luffy, How are you?",
+        htmlText: '<strong>Lorem ipsum dolor sit amet.</strong>',
+      },
+      methods: {
+        getting(){
+          return this.name;
+        },
+        wel: ()=>{
+          return this.name === "Jone" ? true : false;
+        }
+      },    
+    });
+    var app3 = new Vue({
+      el: '#app3',
+      data: {
+        seen: false
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<html>
+<head>
+  <title>My first Vue app</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    {{ country }}
+    <h3>{{city}}</h3>
+    {{personalInfo.age}}
+    {{personalInfo.fullName}}
+    {{cars[0]}}
+    {{getting()}}
+    {{hello()}}
+    <img v-bind:src="url" v-bind:alt="alt">
+    <img v-bind:src="img" v-bind:alt="alter_name">
+    <a v-bind:href="link">Click Me</a>
+  </div>
+  <div id="app2">
+       <span v-bind:title="message">
+          Hover your mouse over me for a few seconds
+          to see my dynamically bound title!
+        </span>
+        
+  </div>
+  
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        country: "Bangladesh",
+        city: "Dhaka",
+        cars: ['Toyota', 'BMW'],
+        personalInfo: {
+          fullName : "Imran Hossain",
+          age: 25,
+          district: "Natore",
+        },
+        getting: ()=>{
+          console.log("Hello World");
+        },
+        url: "https://picsum.photos/id/237/200/300",
+        alt: "dog image",
+        link: "https://google.com",
+        img: "https://picsum.photos/200/300/?blur",
+        alter_name: "test image"
+      },
+      methods: {
+        hello(){
+          return this.city;
+        }
+      }
+
+    });
+    var app2 = new Vue({
+      el: "#app2",
+      data: {
+        message: 'You loaded this page on ' + new Date().toLocaleString(),
+        content: '<h1>Hello World</h1>'
+      }
+    })
+
+
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>

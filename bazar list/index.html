@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bazar List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        .content {
+          padding-top: 10%;
+        }
+      </style>
+</head>
+<body>
+    <div id="app" class="container">
+        <div class="row">
+          <div class="col-md-4 offset-4 content">
+            
+            <h3 class="text-center">Bazar List</h3>
+            
+            <form @submit.prevent="addItem">
+                <input v-model="newItem" class="form-control">
+            </form>
+            
+            <hr>
+    
+            <ul class="list-group">
+                <li v-for="(item, index) in items" :key="index" class="list-group-item">
+                    <button class="btn btn-xs btn-danger" @click="removeItem(index)">--</button>
+                    {{ (index + 1) }}. {{ item.name }}  
+                    <input class="pull-right text-right" style="width:50%" v-model="item.price">
+                </li>
+              <li class="list-group-item"> 
+                <h4> Total  <span class="pull-right">{{ total }}</span></h4> 
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                items:[
+                    { name: 'rice', price: 50.00 },
+                    { name: 'wheat', price: 40.50 },
+                    { name: 'oil', price: 150.00 }
+                ], 
+                newItem : ''
+            },
+            computed: {
+                total(){
+                    var total = 0
+                    this.items.forEach(item =>{
+                        total += parseFloat(item.price)
+                    })
+                    return total
+                }
+            },
+            methods: {
+                addItem(){
+                    this.items.push({
+                        name: this.newItem,
+                        price: 0.0
+                    })
+                },
+                removeItem(index){
+                    this.items.splice(index, 1)
+                }
+            }
+        })
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+</body>
+</html>
