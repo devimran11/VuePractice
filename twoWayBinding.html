@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Way Binding</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <form @submit.prevent="handleForm">
+            First Name: <input type="text" v-model="formData.firstName">
+            Last Name: <input type="text" v-model="formData.lastName">
+            Submit: <input type="submit">
+        </form>
+        <button @click="changed()">Click Me</button>
+    </div>
+    <div id="app2">
+        
+        {{value}}
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                formData: {
+                    firstName: '',
+                    lastName: ''
+                }
+                
+            },
+            methods: {
+                handleForm(){
+                    console.log(this.formData)
+                },
+                changed(){
+                    app2.value = 'Welcome to our country'
+                }
+            },
+        });
+        var app2 = new Vue({
+            el: '#app2',
+            data: {
+                value: 'Hello World'
+            }
+        })
+    </script>
+</body>
+</html>

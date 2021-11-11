@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addition and Substraction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row" id="add">
+            <div class="col-md-6 offset-3">
+                <button class="btn btn-success" v-on:click="a++">Addtion A</button>
+                <button class="btn btn-info" v-on:click="b++">Addtion B</button>
+                <br>
+                    <h1>A = {{a}} B = {{b}}</h1>
+                    <p>Salary + A = {{addToA}}</p>
+                    <p>Salary + B = {{addToB}}</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        var add = new Vue({
+            el: '#add',
+            data: {
+                a: 0,
+                b: 0,
+                salary: 10
+            },
+            methods: {
+                // addToA(){
+                //     console.log("Add A");
+                //     return this.a + this.salary
+                // },
+                // addToB(){
+                //     console.log("Add B");
+                //     return this.b + this.salary
+                // }
+            },
+            computed: {
+                addToA(){
+                    console.log("Add A");
+                    return this.a + this.salary
+                },
+                addToB(){
+                    console.log("Add B");
+                    return this.b + this.salary
+                } 
+            }
+        })
+    </script>
+</body>
+</html>
