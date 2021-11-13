@@ -23,8 +23,8 @@
         <h3>{{counter}}</h3>
         <button type="button" v-on:click="update">Click Me</button>
         <button type="button" v-on:click="counter += 1">Counter</button> -->
-        <button type="button" v-on:click.right="updateName('Hasan', $event)">Arg</button>
-        <div v-on:mousemove="getValue" id="box">
+        <button type="button" @click.right="updateName('Hasan', $event)">Arg</button>
+        <div @mousemove="getValue" id="box">
             Hover Me
         </div>
         <p>{{name}}</p>
